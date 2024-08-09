@@ -12,15 +12,24 @@ import * as pdfjsLib from "pdfjs-dist";
 import mammoth from "mammoth";
 
 const SpeedReader = () => {
-  const [text, setText] = useState("");
-  const [wpm, setWpm] = useState(200);
+  const [text, setText] = useState(() => {
+    const savedText = localStorage.getItem("speedReaderText");
+    return savedText || "";
+  });
+  const [wpm, setWpm] = useState(() => {
+    const savedWpm = localStorage.getItem("speedReaderWpm");
+    return savedWpm ? parseInt(savedWpm) : 200;
+  });
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [currentWord, setCurrentWord] = useState("");
   const [showProgress, setShowProgress] = useState(true);
   const [showCenterButton, setShowCenterButton] = useState(false);
-  const [fontSize, setFontSize] = useState("medium");
+  const [fontSize, setFontSize] = useState(() => {
+    const savedFontSize = localStorage.getItem("speedReaderFontSize");
+    return savedFontSize || "medium";
+  });
   const [isFullScreen, setIsFullScreen] = useState(false);
   const fileInputRef = useRef(null);
 
@@ -141,6 +150,13 @@ const SpeedReader = () => {
       document.removeEventListener("fullscreenchange", handleFullScreenChange);
     };
   }, []);
+
+  // New effect to save text, wpm, and fontSize to localStorage
+  useEffect(() => {
+    localStorage.setItem("speedReaderText", text);
+    localStorage.setItem("speedReaderWpm", wpm.toString());
+    localStorage.setItem("speedReaderFontSize", fontSize);
+  }, [text, wpm, fontSize]);
 
   const progress = (index / words.length) * 100;
   const wordCount = words.split(" ").length;
