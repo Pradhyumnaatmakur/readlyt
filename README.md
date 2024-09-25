@@ -40,6 +40,3 @@ Readlyt is a revolutionary speed reading application that transforms your readin
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
-
-[MIT License](LICENSE)
