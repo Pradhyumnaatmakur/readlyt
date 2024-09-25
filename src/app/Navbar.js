@@ -54,8 +54,6 @@ const Navbar = () => {
           </button>
           <nav className="hidden md:flex space-x-4 lg:space-x-6 xl:space-x-8 items-center">
             <NavLink href="how-it-works">How It Works</NavLink>
-            <NavLink href="about">About</NavLink>
-            <NavLink href="contact-us">Contact Us</NavLink>
           </nav>
         </div>
         {isMobile && (
@@ -66,12 +64,6 @@ const Navbar = () => {
           >
             <NavLink href="how-it-works" mobile>
               How It Works
-            </NavLink>
-            <NavLink href="about" mobile>
-              About
-            </NavLink>
-            <NavLink href="contact-us" mobile>
-              Contact Us
             </NavLink>
           </nav>
         )}

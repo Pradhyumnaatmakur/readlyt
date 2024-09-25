@@ -151,7 +151,6 @@ const SpeedReader = () => {
     };
   }, []);
 
-  // New effect to save text, wpm, and fontSize to localStorage
   useEffect(() => {
     localStorage.setItem("speedReaderText", text);
     localStorage.setItem("speedReaderWpm", wpm.toString());
