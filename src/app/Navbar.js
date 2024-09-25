@@ -27,7 +27,7 @@ const Navbar = () => {
       }
     };
 
-    handleResize(); // Call once to set initial state
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
